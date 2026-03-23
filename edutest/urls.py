@@ -19,8 +19,11 @@ from django.urls import path
 from exams import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', views.home),
+    path('admin/', admin.site.urls),
     path('home/', views.home),
     path('login/', views.login),
+    path('register/', views.register),
+    path('dashboard/', views.dashboard),
+    path('exam/', views.exam),
 ]
