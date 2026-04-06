@@ -1,0 +1,46 @@
+body{
+    background:#f4f6fb;
+    font-family: Arial, sans-serif;
+}
+
+/* navbar */
+.navbar{
+    padding:12px 20px;
+}
+
+/* center card */
+.card-box{
+    width:400px;
+    margin:auto;
+    margin-top:80px;
+    padding:30px;
+    background:white;
+    border-radius:10px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* home page */
+.hero{
+    text-align:center;
+    margin-top:120px;
+}
+
+.hero h1{
+    font-size:40px;
+}
+
+.hero p{
+    color:gray;
+}
+
+/* dashboard */
+.dashboard-box{
+    width:700px;
+    margin:auto;
+    margin-top:80px;
+}
+
+/* buttons */
+.btn-main{
+    width:100%;
+}

@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Login - EduTest</title>
+
+<title>Login</title>
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 
-<body class="bg-light">
+<body>
 
-<div class="container mt-5">
+<div class="card-box">
 
-<div class="row justify-content-center">
-
-<div class="col-md-4">
-
-<div class="card p-4 shadow">
-
-<h3 class="text-center">Student Login</h3>
+<h3 class="text-center mb-4">Student Login</h3>
 
 <form method="POST">
+
 {% csrf_token %}
 
 {% if error %}
@@ -26,24 +29,20 @@
 </div>
 {% endif %}
 
-<div class="mb-3">
-<label>Email</label>
-<input type="email" class="form-control" name="email">
-</div>
+<input type="email" name="email" class="form-control mb-3" placeholder="Email">
 
-<div class="mb-3">
-<label>Password</label>
-<input type="password" name="password" class="form-control">
-</div>
+<input type="password" name="password" class="form-control mb-3" placeholder="Password">
 
-<button class="btn btn-primary w-100">Login</button>
+<button class="btn btn-primary btn-main">Login</button>
 
 </form>
 
-</div>
-</div>
-</div>
+<p class="text-center mt-3">
+New student? <a href="/register/">Register here</a>
+</p>
+
 </div>
 
 </body>
+
 </html>
