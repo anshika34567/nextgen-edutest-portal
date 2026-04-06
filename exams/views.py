@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Student
+from .models import Result
 
 
 # Home Page
@@ -15,6 +16,7 @@ def login(request):
 
         try:
             student = Student.objects.get(email=email, password=password)
+            request.session['student_name'] = student.name
             return redirect('/dashboard/')
         except:
             return render(request, 'login.html', {'error': 'Invalid Email or Password'})
@@ -63,6 +65,14 @@ def exam(request):
 
             if selected == q.correct_option:
                 score += 1
+        student_name=request.session.get('student_name')        
+       
+        Result.objects.create(
+        student_name=student_name,
+        score=score,
+        total=total
+        )
+
 
         return render(request,'result.html',{'score':score,'total':total})
 
@@ -75,3 +85,16 @@ from django.contrib.auth import logout
 def logout_user(request):
     logout(request)
     return redirect('/')
+
+#history
+def history(request):
+    
+    results = Result.objects.all().order_by('-date')
+    return render(request,"history.html",{"results":results})
+
+#leaderboard
+def leaderboard(request):
+
+    results = Result.objects.all().order_by('-score')[:10]
+
+    return render(request, "leaderboard.html", {"results": results})

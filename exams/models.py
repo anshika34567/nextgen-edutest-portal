@@ -12,7 +12,7 @@ class Student(models.Model):
     def __str__(self):
         return self.name
     
-
+#QUESTION MODEL
 class Question(models.Model):
 
     question_text = models.CharField(max_length=500)
@@ -26,3 +26,18 @@ class Question(models.Model):
 
     def __str__(self):
         return self.question_text
+    
+    
+    
+#RESULT MODEL
+class Result(models.Model):
+
+    student_name = models.CharField(max_length=100)
+    score = models.IntegerField()
+    total = models.IntegerField()
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.student_name
+    
+    
