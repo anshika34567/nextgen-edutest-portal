@@ -23,6 +23,12 @@
 
 <h4>Your Score: {{ score }} / {{ total }}</h4>
 
+{% if score >= 5 %}
+<p style="color:green;">Excellent Performance 🎉</p>
+{% else %}
+<p style="color:red;">Keep Practicing 📚</p>
+{% endif %}
+
 <a href="/dashboard" class="btn btn-primary mt-3">Back to Dashboard</a>
 
 </div>

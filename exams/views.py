@@ -51,7 +51,7 @@ from .models import Question
 
 def exam(request):
 
-    questions = Question.objects.all()
+    questions = Question.objects.order_by('?')
     if request.method == "POST":
     
         score = 0
@@ -67,3 +67,11 @@ def exam(request):
         return render(request,'result.html',{'score':score,'total':total})
 
     return render(request,'exam.html',{'questions':questions})
+
+
+#logout
+from django.contrib.auth import logout
+
+def logout_user(request):
+    logout(request)
+    return redirect('/')
