@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Student
 from .models import Result
-
+from .models import Exam
 
 # Home Page
 def home(request):
@@ -46,38 +46,51 @@ def register(request):
 
 # Dashboard Page
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    exams = Exam.objects.all()
+    return render(request, 'dashboard.html', {'exams': exams})
 
 # Exam Page
 from .models import Question
-
-def exam(request):
-
-    questions = Question.objects.order_by('?')
-    if request.method == "POST":
+def exam(request, exam_id):
     
+    exam = Exam.objects.get(id=exam_id)
+
+    questions = Question.objects.filter(exam=exam).order_by('?')
+
+    if request.method == "POST":
+
         score = 0
         total = questions.count()
 
         for q in questions:
 
-            selected = request.POST.get(str(q.id))
+            selected = request.POST.get(f"q{q.id}")
 
             if selected == q.correct_option:
                 score += 1
-        student_name=request.session.get('student_name')        
-       
+
+        student_name = request.session.get('student_name', 'Guest')
+
         Result.objects.create(
-        student_name=student_name,
-        score=score,
-        total=total
+            student_name=student_name,
+            score=score,
+            total=total
+        )
+        percentage =round((score / total) * 100, 2)
+        return render(
+            request,
+            'result.html',
+            {
+                'score': score,
+                'total': total,
+                'percentage': percentage,
+            }
         )
 
-
-        return render(request,'result.html',{'score':score,'total':total})
-
-    return render(request,'exam.html',{'questions':questions})
-
+    return render(request,'exam.html', {
+        'questions': questions,'exam': exam
+        }
+    )
 
 #logout
 from django.contrib.auth import logout

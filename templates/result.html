@@ -14,7 +14,12 @@
 </head>
 
 <body>
-
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand">NextGen EduTest Portal</a>
+    </div>
+</nav>
+{% include 'navbar.html' %}
 <div class="dashboard-box text-center">
 
 <h2>Exam Result</h2>
@@ -22,6 +27,8 @@
 <hr>
 
 <h4>Your Score: {{ score }} / {{ total }}</h4>
+<h4>Percentage: {{ percentage }}%</h4>
+
 
 {% if score >= 5 %}
 <p style="color:green;">Excellent Performance 🎉</p>
@@ -31,6 +38,9 @@
 
 <a href="/dashboard" class="btn btn-primary mt-3">Back to Dashboard</a>
 
+</div>
+<div class="footer" style="text-align: center; position: fixed; bottom: 0; width: 100%; padding: 10px; background-color: #f8f9fa;">
+NextGen EduTest Portal © 2026
 </div>
 
 </body>

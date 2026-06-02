@@ -1,35 +1,89 @@
-
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaderboard</title>
 
-<div class="main-container">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
 
-<div class="exam-box">
+<body>
+<nav class="navbar navbar-dark bg-dark">
+<div class="container-fluid">
+<a class="navbar-brand">NextGen EduTest Portal</a>
+</div>
+</nav>
+{% include 'navbar.html' %}
+<div class="container mt-5">
 
-<h2>Leaderboard 🏆</h2>
+    <div class="card shadow-lg border-0">
 
-<table border="1" width="100%" cellpadding="10">
+        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+            <h3 class="mb-0">🏆 Leaderboard</h3>
 
-<tr>
-<th>Rank</th>
-<th>Name</th>
-<th>Score</th>
-<th>Total</th>
-</tr>
+            <a href="/dashboard/" class="btn btn-light">
+                ← Dashboard
+            </a>
+        </div>
 
-{% for r in results %}
+        <div class="card-body">
 
-<tr>
-<td>{{ forloop.counter }}</td>
-<td>{{ r.student_name }}</td>
-<td>{{ r.score }}</td>
-<td>{{ r.total }}</td>
-</tr>
+            <table class="table table-hover table-striped align-middle">
 
-{% endfor %}
+                <thead class="table-primary">
+                    <tr>
+                        <th>Rank</th>
+                        <th>Student</th>
+                        <th>Score</th>
+                        <th>Total</th>
+                        <th>Percentage</th>
+                    </tr>
+                </thead>
 
-</table>
+                <tbody>
+
+                {% for result in results %}
+                <tr>
+
+                    <td>
+                        {% if forloop.counter == 1 %}
+                            🥇
+                        {% elif forloop.counter == 2 %}
+                            🥈
+                        {% elif forloop.counter == 3 %}
+                            🥉
+                        {% else %}
+                            {{ forloop.counter }}
+                        {% endif %}
+                    </td>
+
+                    <td>{{ result.student_name }}</td>
+
+                    <td>{{ result.score }}</td>
+
+                    <td>{{ result.total }}</td>
+
+                    <td>
+                        {% widthratio result.score result.total 100 %}%
+                    </td>
+
+                </tr>
+                {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
 
 </div>
-
+<div class="footer" style="text-align: center; position: fixed; bottom: 0; width: 100%; padding: 10px; background-color: #f8f9fa;">
+NextGen EduTest Portal © 2026
 </div>
+
+
+</body>
+</html>
