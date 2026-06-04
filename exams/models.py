@@ -8,6 +8,9 @@ class Student(models.Model):
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=100)
     course = models.CharField(max_length=100)
+    is_blocked = models.BooleanField(default=False)
+
+    
 
     def __str__(self):
         return self.name
@@ -50,4 +53,19 @@ class Result(models.Model):
     def __str__(self):
         return self.student_name
     
-    
+class CheatingReport(models.Model):
+
+    student_name = models.CharField(max_length=100)
+
+    exam_name = models.CharField(max_length=100)
+
+    violation_type = models.CharField(max_length=100)
+
+    date = models.DateTimeField(auto_now_add=True)
+
+    is_blocked = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.student_name
+
+   

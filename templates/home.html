@@ -1,42 +1,238 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
+    <head>
+    <title>EduTest Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<title>NextGen EduTest Portal</title>
+    <style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
 
-{% load static %}
+    body{
+        font-family:'Segoe UI',sans-serif;
+        min-height:100vh;
 
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
+        background:linear-gradient(
+            135deg,
+            #0f172a,
+            #1e3a8a,
+            #312e81
+        );
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        color:white;
+    }
 
+    .navbar{
+        background:rgba(0,0,0,0.3)!important;
+        backdrop-filter:blur(10px);
+        padding:15px 30px;
+    }
+
+    .hero{
+        min-height:80vh;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        text-align:center;
+    }
+
+    .hero h1{
+        font-size:4rem;
+        font-weight:700;
+        margin-bottom:20px;
+    }
+
+    .hero p{
+        font-size:1.3rem;
+        color:#dbeafe;
+        margin-bottom:30px;
+    }
+
+    .btn-primary{
+        background:#2563eb;
+        border:none;
+        padding:12px 30px;
+        border-radius:10px;
+    }
+
+    .btn-primary:hover{
+        background:#1d4ed8;
+    }
+
+    .feature-card{
+        background:rgba(255,255,255,0.1);
+        backdrop-filter:blur(12px);
+        border-radius:20px;
+        padding:30px;
+        text-align:center;
+        height:100%;
+        transition:0.3s;
+        border:1px solid rgba(255,255,255,0.1);
+    }
+
+    .feature-card:hover{
+        transform:translateY(-8px);
+    }
+
+    .feature-card h3{
+        margin-bottom:15px;
+    }
+
+    .features{
+        padding:50px 0;
+    }
+
+    .footer{
+        text-align:center;
+        padding:30px;
+        color:#cbd5e1;
+    }
+
+    @media(max-width:768px){
+
+        .hero h1{
+            font-size:2.5rem;
+        }
+
+        .hero p{
+            font-size:1rem;
+        }
+    }
+
+</style>  
 </head>
 
 <body>
 
-<nav class="navbar navbar-dark bg-dark">
-<div class="container-fluid">
-<a class="navbar-brand">NextGen EduTest Portal</a>
-</div>
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+    <div class="container">
+
+        <a class="navbar-brand fw-bold" href="#">
+            🎓 NextGen EduTest
+        </a>
+
+        <div>
+            <a href="/login/" class="btn btn-outline-light me-2">
+                Login
+            </a>
+
+            <a href="/register/" class="btn btn-primary me-2">
+                Register
+            </a>
+
+            <a href="/admin-dashboard/" class="btn btn-warning">
+                Admin
+            </a>
+           
+        </div>
+
+    </div>
 </nav>
 
-<div class="hero">
+<!-- HERO SECTION -->
 
-<h1>Welcome to NextGen EduTest Portal</h1>
+<section class="hero-section">
 
-<p>Online Testing System for Students</p>
+    <div class="container">
 
-<a href="/login/" class="btn btn-primary mt-3">Login</a>
-<a href="/register/" class="btn btn-primary mt-3">Register</a>
+        <div class="row align-items-center">
 
-</div>
+            <div class="col-lg-6">
 
+                <h1 class="hero-title">
+                    Smart Online Examination System
+                </h1>
 
+                <p class="hero-text">
+                    Conduct exams, evaluate students instantly,
+                    monitor performance, and generate results
+                    automatically through a secure platform.
+                </p>
 
+                <a href="/login/" class="btn btn-primary btn-lg me-3">
+                    Start Exam
+                </a>
 
-<div class="footer" style="text-align: center; position: fixed; bottom: 0; width: 100%; padding: 10px; background-color: #f8f9fa;">
-NextGen EduTest Portal © 2026
-</div>
+                <a href="/register/" class="btn btn-outline-light btn-lg">
+                    Join Now
+                </a>
+
+            </div>
+
+            
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FEATURES -->
+
+<section class="features-section">
+
+    <div class="container">
+
+        <h2 class="text-center mb-5">
+            Key Features
+        </h2>
+
+        <div class="row">
+
+            <div class="col-md-3">
+                <div class="feature-card">
+                    <i class="fas fa-file-alt"></i>
+                    <h4>Online Exams</h4>
+                    <p>Create and conduct examinations online.</p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="feature-card">
+                    <i class="fas fa-clock"></i>
+                    <h4>Live Timer</h4>
+                    <p>Automatic countdown with submission.</p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="feature-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>Instant Results</h4>
+                    <p>View results immediately after exams.</p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="feature-card">
+                    <i class="fas fa-trophy"></i>
+                    <h4>Leaderboard</h4>
+                    <p>Track top-performing students.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+    <p>
+        © 2026 NextGen EduTest Portal |
+        Developed using Django & Bootstrap
+    </p>
+</footer>
 </body>
 </html>
+
+

@@ -21,10 +21,12 @@ from exams import views
 urlpatterns = [
     path('', views.home),
     path('admin/', admin.site.urls),
+    path('admin-dashboard/', views.admin_dashboard, name='admin_dashboard'),
     path('home/', views.home),
     path('login/', views.login),
     path('register/', views.register),
     path('dashboard/', views.dashboard),
+    path('profile/', views.profile, name='profile'),
     path('history/', views.history),
     path('leaderboard/', views.leaderboard),
     path('exam/<int:exam_id>/', views.exam, name='exam'),
